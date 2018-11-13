@@ -1,0 +1,30 @@
+{
+  "name": "kamsar.net",
+  "version": "1.0.0",
+  "description": "Kam Figy's personal site",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamsar/kamsar.net.git"
+  },
+  "author": "Kam Figy",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/kamsar/kamsar.net/issues"
+  },
+  "homepage": "https://github.com/kamsar/kamsar.net#readme",
+  "dependencies": {
+    "@zeit/next-typescript": "^1.1.1",
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.3"
+  }
+}
