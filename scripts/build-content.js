@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const globby = require("globby");
 const MarkdownIt = require("markdown-it");
-const markdownItHighlight = require("markdown-it-highlight").default;
+const hljs = require('highlight.js');
 const markdownItNamedHeadings = require("markdown-it-named-headings");
 const yaml = require("js-yaml");
 const mkdirp = require("mkdirp");
@@ -12,9 +12,19 @@ const mkdirp = require("mkdirp");
 const FRONTMATTER_SEPERATOR = "---";
 const BASE_PATH = path.resolve(path.join(__dirname), '..', 'content');
 
-const markdownIt = MarkdownIt();
+const markdownIt = MarkdownIt({
+  typographer: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return `<pre class="hljs"><code>${hljs.highlight(lang, str, true).value}</code></pre>`;
+      } catch (__) {}
+    }
 
-markdownIt.use(markdownItHighlight);
+    return `<pre class="hljs"><code>${str}</code></pre>`; // use external default escaping
+  }
+});
+
 markdownIt.use(markdownItNamedHeadings);
 
 ProcessContent().catch(e => {

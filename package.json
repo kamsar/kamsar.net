@@ -26,7 +26,9 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
+    "highlight.js": "^9.13.1",
     "next": "^7.0.2",
+    "nprogress": "^0.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
@@ -35,10 +37,10 @@
     "@types/next": "^7.0.4",
     "@types/node": "^10.12.6",
     "@types/react": "^16.7.3",
+    "@types/nprogress": "^0.0.29",
     "globby": "^8.0.1",
     "js-yaml": "^3.12.0",
     "markdown-it": "^8.4.2",
-    "markdown-it-highlight": "^0.2.0",
     "markdown-it-named-headings": "^1.1.0"
   }
 }

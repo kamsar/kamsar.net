@@ -12,7 +12,7 @@ In a word, _previewing_. Imagine during early development and prototyping of a J
 
 This is one of the major advantages of JSS - using disconnected mode, a team like this can develop non-throwaway frontend for the final JSS app. But stakeholders will want to review the in-progress JSS app somewhere other than `http://localhost:3001`, so how do we put a JSS site somewhere shared without having a Sitecore backend?
 
-> Wondering about real-world usage? 
+> Wondering about real-world usage?
 > The [JSS docs](https://jss.sitecore.net) use this technique.
 
 ## How does it work?
@@ -31,7 +31,7 @@ Any of the JSS sample templates will work for this technique. [Create yourself a
 1. Create a build of the JSS app with `jss build`. This will build the artifacts that the app needs to run.
 1. Install npm packages necessary to host a disconnected server: `yarn add @sitecore-jss/sitecore-jss-proxy express` (substitute `npm i --save` if you use npm instead of yarn)
 1. Deploy the following code to `/scripts/disconnected-ssr.js` (or similar path). Note: this code is set up for React, and will require minor tweaks for Angular or Vue samples (`build` -> `dist`)
-    ```
+    ```jsx
     const express = require('express');
     const { appName, language, sitecoreDistPath } = require('../package.json').config;
     const scProxy = require('@sitecore-jss/sitecore-jss-proxy').default;
@@ -93,13 +93,13 @@ Heroku is a very easy to use PaaS Node host, but you can also deploy to Azure Ap
 
 1. We need to tell Heroku to build our app when it's deployed.
     * Locate the `scripts` section in the `package.json`
-    * Add the following script: 
+    * Add the following script:
     ```
     "postinstall": "npm run build"`
     ```
 1. We need to tell Heroku the command to use to start our app.
     * Create a file in the app root called `Procfile`
-    * Place the following contents: 
+    * Place the following contents:
     ```
     web: node ./scripts/disconnected-ssr.js $PORT
     ```
@@ -117,7 +117,7 @@ Heroku is a very easy to use PaaS Node host, but you can also deploy to Azure Ap
     ```
     heroku config:set NPM_CONFIG_PRODUCTION=false YARN_PRODUCTION=false
     ```
-1. Deploy the JSS app to Heroku: 
+1. Deploy the JSS app to Heroku:
 ```
 git push -u heroku master
 ```

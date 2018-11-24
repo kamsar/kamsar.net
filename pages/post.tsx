@@ -1,16 +1,15 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { withRouter, WithRouterProps } from "next/router";
 import Link from 'next/link';
-import Page from "../components/Page";
 
-import 'markdown-it-highlight/dist/index.css'
+import 'highlight.js/styles/monokai-sublime.css';
 
 interface PostRenderingProps {
   title: string;
   bodyHtml: string;
 }
 
-const PostWrapper = (props: WithRouterProps) => {
+const PostWrapper: FunctionComponent<WithRouterProps> = (props) => {
   let pageJson: PostRenderingProps | null = null;
   if (props.router.query &&  props.router.query.fullUrl) {
     pageJson = require(`../content${props.router.query.fullUrl}.json`);
@@ -18,12 +17,12 @@ const PostWrapper = (props: WithRouterProps) => {
 
   return (
     <div>
-      <Page body={PostBody(pageJson as PostRenderingProps)} />
+      <PostBody {...pageJson as PostRenderingProps} />
     </div>
   );
 }
 
-const PostBody = (props: { title: string, bodyHtml: string }) => {
+const PostBody: FunctionComponent<PostRenderingProps> = (props) => {
   return (
     <div>
       <h1>Post: {props.title}</h1>

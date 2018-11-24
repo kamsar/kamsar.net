@@ -1,7 +1,17 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
+import Meta from "./Meta";
+import Header from "./Header";
 
-const Page = ({ body }: { body: any }) => {
-  return <div>{body}</div>;
+import '../public/styles.css';
+
+const Page: FunctionComponent = props => {
+  return (
+    <div>
+      <Meta />
+      <Header />
+      {props.children}
+    </div>
+  );
 };
 
 export default Page;
