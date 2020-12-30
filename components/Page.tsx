@@ -9,7 +9,15 @@ const Page: FunctionComponent = props => {
     <div>
       <Meta />
       <Header />
-      {props.children}
+      <main role="content">
+        {props.children}
+      </main>
+
+      <style jsx>{`
+        main {
+          margin: 5px;
+        }
+      `}</style>
     </div>
   );
 };
